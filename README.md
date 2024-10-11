@@ -76,12 +76,10 @@ This app is built using Expo's **prebuild** workflow, which allows you to target
    On your Android device, make sure the app has permission to read SMS messages. You may be prompted during installation, but you can also manually enable it in your device's settings.
 
 
-
-
 ## How It Works
 
 - The app uses the [`react-native-get-sms-android`](https://www.npmjs.com/package/react-native-get-sms-android) package to access and list SMS messages on Android devices.
-- A regex pattern is used to extract key financial information such as the amount, date, and details from SMS messages typically sent by banks or payment apps.
+- A regex pattern is used to extract key financial information such as the date, amount, transaction type, and details from SMS messages typically sent by banks or payment apps.
 - The SMS messages are displayed in a clean table, with a modal for additional details.
 - Real-time updates are handled using `DeviceEventEmitter`, allowing the app to respond to new SMS messages as they arrive.
 

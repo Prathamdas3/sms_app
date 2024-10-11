@@ -25,17 +25,17 @@ export default async function getExpenseData():Promise<DataType[]> {
                 if (match) {
                     const amount = match[1] ? match[1].replace(/,/g, '') : null;
                     const sender = match[2] ? (match[2].trim() === 'You' ? 'You' : match[2].trim()) : 'Unknown';
-                    const receiver = match[3] ? match[3].trim() : 'Unknown'; // Receiver is the name after "to"
-                    const transactionType = match[4] || 'Unknown'; // Get transaction type (Credited or Debited)
+                    const receiver = match[3] ? match[3].trim() : 'Unknown'; 
+                    const transactionType = match[4] || 'Unknown';
 
-                    // Push the parsed data into the expenses array
+                    
                     return {
-                        amount: amount, // Cleaned amount
-                        description: body, // Full SMS body for context
-                        date: new Date(parseInt(date)).toLocaleDateString(), // Formatted date
-                        sender: sender, // Sender, "You" or someone else
-                        receiver: receiver, // Receiver (the one who got the money)
-                        transactionType: transactionType // Type of transaction
+                        amount: amount, 
+                        description: body, 
+                        date: new Date(parseInt(date)).toLocaleDateString(), 
+                        sender: sender, 
+                        receiver: receiver, 
+                        transactionType: transactionType 
                     };
                 }
 
