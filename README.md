@@ -1,50 +1,90 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# SMS Expense Tracker
 
-## Get started
+**SMS Expense Tracker** is a React Native app built using Expo that allows users to read SMS messages on their device and extract expense-related information. The app parses SMS messages to collate transaction details such as amounts, descriptions, dates, and more, displaying this information in a neat and organized table format.
 
-1. Install dependencies
+The app also supports real-time updates, so if a new expense-related SMS is received, it will be immediately reflected in the app.
+
+## Features
+
+- **Read SMS Messages**: Automatically fetches all SMS messages from the device.
+- **Expense Detection**: Identifies expense-related messages using regex to extract:
+  - Transaction amount
+  - Merchant or transaction description
+  - Date
+  - Sender and receiver details
+  - Type of transaction (Credited/Debited)
+- **Real-Time Updates**: Automatically updates the display when a new SMS message is received.
+- **Organized Display**: Expenses are displayed in a user-friendly table with detailed views for each transaction.
+- **Interactive Modal**: Users can view full SMS descriptions by clicking a button.
+
+
+
+## Installation Guide
+
+### Prerequisites
+
+This app is built using Expo's **prebuild** workflow, which allows you to target native code easily. Before starting, ensure you have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [Yarn](https://yarnpkg.com/) or npm
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- Android Studio with SDK tools (for Android development)
+- A Physical Device
+
+### Installation Steps
+
+1. **Clone the repository**:
 
    ```bash
+   git clone https://github.com/Prathamdas3/sms_app.git
+   cd sms_app
+   ```
+
+2. **Install dependencies**:
+
+   Install the required packages using Yarn or npm:
+
+   ```bash
+   yarn install
+   # or
    npm install
    ```
 
-2. Start the app
+3. **Prebuild the app**:
+
+   Since this app uses the prebuild workflow to include native code (for accessing SMS), you'll need to run the prebuild step to generate the necessary Android/iOS project files:
 
    ```bash
-    npx expo start
+   expo prebuild
    ```
 
-In the output, you'll find options to open the app in a
+   This will generate the `android` and `ios` directories containing native code. Ensure that Android Studio is correctly configured for Android development.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+4. **Build the app**:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   Once the prebuild step is complete, you can run the app on an Android emulator or a physical device:
 
-## Get a fresh project
+   ```bash
+   expo run:android
+   ```
 
-When you're ready, run:
+   > **Note**: As of now, this project supports only Android since SMS permissions and access are platform-specific. Ensure you have the necessary permissions granted on your device.
 
-```bash
-npm run reset-project
-```
+5. **Grant SMS Permissions**:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+   On your Android device, make sure the app has permission to read SMS messages. You may be prompted during installation, but you can also manually enable it in your device's settings.
 
-## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-## Join the community
+## How It Works
 
-Join our community of developers creating universal apps.
+- The app uses the [`react-native-get-sms-android`](https://www.npmjs.com/package/react-native-get-sms-android) package to access and list SMS messages on Android devices.
+- A regex pattern is used to extract key financial information such as the amount, date, and details from SMS messages typically sent by banks or payment apps.
+- The SMS messages are displayed in a clean table, with a modal for additional details.
+- Real-time updates are handled using `DeviceEventEmitter`, allowing the app to respond to new SMS messages as they arrive.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+
+
