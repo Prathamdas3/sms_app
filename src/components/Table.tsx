@@ -60,6 +60,7 @@ export default function Table({ hasPermission }: { hasPermission: boolean }) {
             console.error('Error fetching expense data:', error);
         }
     };
+ 
 
     useEffect(() => {
         handlePress();
