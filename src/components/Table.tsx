@@ -97,7 +97,7 @@ export default function Table({ hasPermission }: { hasPermission: boolean }) {
             ) : (
                 <View style={styles.container}>
                     <Button mode="elevated" onPress={handlePress}>
-                        Get Expenses
+                    View All Expenses
                     </Button>
                 </View>
             )}

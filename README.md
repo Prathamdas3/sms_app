@@ -10,14 +10,11 @@ The app also supports real-time updates, so if a new expense-related SMS is rece
 - **Read SMS Messages**: Automatically fetches all SMS messages from the device.
 - **Expense Detection**: Identifies expense-related messages using regex to extract:
   - Transaction amount
-  - Merchant or transaction description
+  - Description
   - Date
-  - Sender and receiver details
   - Type of transaction (Credited/Debited)
-- **Real-Time Updates**: Automatically updates the display when a new SMS message is received.
 - **Organized Display**: Expenses are displayed in a user-friendly table with detailed views for each transaction.
 - **Interactive Modal**: Users can view full SMS descriptions by clicking a button.
-
 
 
 ## Installation Guide
